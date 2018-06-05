@@ -88,7 +88,9 @@ public class IssueGCFunctionHandler implements RequestHandler<IssueGiftCardReque
 			e.printStackTrace();
 			return response;
 		}
-
+		finally {
+			session.close();
+		}
 		return response;
 	}
 

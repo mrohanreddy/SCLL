@@ -28,6 +28,8 @@ public class Partner implements Serializable{
 	private BigDecimal scllPercentage;
 	private BigDecimal partnerPercentage;
 	private BigDecimal minimumPoints;
+	private String frontImage;
+	private String backImage;
 	
 	@JoinColumn(name = "UserID", unique = true)
     @OneToOne(cascade = CascadeType.ALL)
@@ -127,6 +129,22 @@ public class Partner implements Serializable{
 
 	public void setPartnerEmailAddress(String partnerEmailAddress) {
 		this.partnerEmailAddress = partnerEmailAddress;
+	}
+
+	public String getFrontImage() {
+		return frontImage;
+	}
+
+	public void setFrontImage(String frontImage) {
+		this.frontImage = frontImage;
+	}
+
+	public String getBackImage() {
+		return backImage;
+	}
+
+	public void setBackImage(String backImage) {
+		this.backImage = backImage;
 	}
 	
 	

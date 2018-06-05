@@ -48,6 +48,9 @@ public class GiftCardIssuedClearFunctionHandler implements RequestHandler<GiftCa
 			logger.log("exception clearing issued gift cards"+e.getMessage().toString());
 			e.printStackTrace();
 		}
+		finally {
+			session.close();
+		}
         
         return response;
     }

@@ -58,6 +58,9 @@ public class GiftCardIssuedFunctionHandler implements RequestHandler<GiftCardIss
 			logger.log("exception getting gift cards details"+e.getMessage().toString());
 			e.printStackTrace();
 		}
+		finally {
+			session.close();
+		}
 		return response.getGiftCardsIssued();
     }
 		

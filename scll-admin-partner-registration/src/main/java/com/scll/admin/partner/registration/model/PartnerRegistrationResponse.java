@@ -4,6 +4,9 @@ public class PartnerRegistrationResponse {
 	
 	private String status;
 	private String message;
+	private String securityCode;
+	
+	
 	public String getStatus() {
 		return status;
 	}
@@ -16,6 +19,13 @@ public class PartnerRegistrationResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	public String getSecurityCode() {
+		return securityCode;
+	}
+	public void setSecurityCode(String securityCode) {
+		this.securityCode = securityCode;
+	}
+	
 	
 	
 	

@@ -49,6 +49,8 @@ public class PartnerRegistrationLambdaHandler implements RequestHandler<PartnerR
 		partner.setPartnerPercentage(partnerRegistrationRequest.getPartnerPercentage());
 		partner.setMinimumPoints(partnerRegistrationRequest.getMinimumPoints());
 		partner.setPartnershipSetupDate(partnerRegistrationRequest.getCollaborationDate());
+		partner.setFrontImage(partnerRegistrationRequest.getFrontImage());
+		partner.setBackImage(partnerRegistrationRequest.getBackImage());
 		
 		
 		try {
@@ -58,7 +60,7 @@ public class PartnerRegistrationLambdaHandler implements RequestHandler<PartnerR
 			session.getTransaction().commit();
 			response.setMessage("Partner Created Successfully");
 			response.setStatus("0");
-			String messageStatus=sendEmailToPartner(partnerRegistrationRequest.getPartnerEmailAddress(),partnerRegistrationRequest.getPartnerName());
+			String messageStatus=sendEmailToPartner(partnerRegistrationRequest.getPartnerEmailAddress(),partnerRegistrationRequest.getPartnerName(),partnerRegistrationRequest.getPartnerID());
 		}
 		catch (Exception e) {
 			logger.log("Exception saving partner details !!!" + e.toString() + "-->" + e.getMessage());
@@ -73,24 +75,27 @@ public class PartnerRegistrationLambdaHandler implements RequestHandler<PartnerR
 			}
 			logger.log("exception "+e.getCause().getCause().getMessage());
 		}
+		finally {
+			session.close();
+		}
         
         return response;
     }
     
     
-    private String sendEmailToPartner(String email,String partnerName) {
+    private String sendEmailToPartner(String email,String partnerName, String partnerID) {
     	String status="";
 		 try {
 
-				URL url = new URL("http://app.terrachemicalsco.com/api/scll/email?email="+email+"&partnerName="+partnerName);
+				URL url = new URL("http://app.terrachemicalsco.com/api/scll/email?email="+email+"&partnerName="+partnerName+"&partnerId="+partnerID);
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("Accept", "application/json");
 
-				if (conn.getResponseCode() != 200) {
+				/*if (conn.getResponseCode() != 200) {
 					throw new RuntimeException("Failed : HTTP error code : "
 							+ conn.getResponseCode());
-				}
+				}*/
 
 				BufferedReader br = new BufferedReader(new InputStreamReader(
 					(conn.getInputStream())));

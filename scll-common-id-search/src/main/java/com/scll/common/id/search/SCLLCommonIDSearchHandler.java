@@ -47,6 +47,7 @@ public class SCLLCommonIDSearchHandler implements RequestHandler<IDSearchRequest
 				 response.setStatus("1");
 			 }
 		}
+		session.close();
        return response;
         
     }

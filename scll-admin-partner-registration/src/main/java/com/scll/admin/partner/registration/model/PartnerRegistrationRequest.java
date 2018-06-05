@@ -14,6 +14,8 @@ public class PartnerRegistrationRequest {
 	private BigDecimal minimumPoints;
 	private Date collaborationDate;
 	private String storeID;
+	private String frontImage;
+	private String backImage;
 	
 	public String getPartnerID() {
 		return partnerID;
@@ -74,6 +76,18 @@ public class PartnerRegistrationRequest {
 	}
 	public void setStoreID(String storeID) {
 		this.storeID = storeID;
+	}
+	public String getFrontImage() {
+		return frontImage;
+	}
+	public void setFrontImage(String frontImage) {
+		this.frontImage = frontImage;
+	}
+	public String getBackImage() {
+		return backImage;
+	}
+	public void setBackImage(String backImage) {
+		this.backImage = backImage;
 	}
 	
 }
