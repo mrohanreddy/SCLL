@@ -30,6 +30,7 @@ import com.scll.customer.redemption.model.PartnerDetails;
 import com.scll.customer.redemption.model.RedeemptionRequest;
 import com.scll.customer.redemption.model.RedeemptionResponse;
 import com.scll.customer.redemption.util.HibernateUtil;
+import com.scll.customer.redemption.util.RandomString;
 
 public class CustomerRedeemptionHandler implements RequestHandler<RedeemptionRequest, RedeemptionResponse> {
 
@@ -45,12 +46,14 @@ public class CustomerRedeemptionHandler implements RequestHandler<RedeemptionReq
 		try {
 			List<CardDetails> cardDetailsList = redeemptionRequest.getCardsList();
 			Iterator<CardDetails> cardDetailsIterator = cardDetailsList.iterator();
-			
+		
 			Query customerQuery = session.createQuery("FROM Customer where CustomerID=:customerID");
 			customerQuery.setParameter("customerID", redeemptionRequest.getCustomerID());
 			System.out.println("customerQuery---->"+customerQuery.getQueryString());
 			Customer customer = (Customer) customerQuery.getSingleResult();
 			List<PartnerDetails> partnerDetailsList = new ArrayList<PartnerDetails>();
+			RandomString gen = new RandomString(6);
+			
 			Integer pointsRedeemed = 0;
 			redeemptionResponse.setCustomerName(customer.getCustomerFirstName()+" "+customer.getCustomerLastName());
 			redeemptionResponse.setCustomerEmailId(customer.getCustomerEmailAddress());
@@ -94,8 +97,8 @@ public class CustomerRedeemptionHandler implements RequestHandler<RedeemptionReq
 					customerRedemption.setStatus("Opted");
 					customerRedemption.setCustomerID(redeemptionRequest.getCustomerID());
 					customerRedemption.setPartner(partner);
-					customerRedemption.setSecurityCode("scll" + strDate);
-					
+					//customerRedemption.setSecurityCode("scll" + strDate);
+					customerRedemption.setSecurityCode(gen.nextString());
 					
 					session.beginTransaction();
 					session.save(customerRedemption);

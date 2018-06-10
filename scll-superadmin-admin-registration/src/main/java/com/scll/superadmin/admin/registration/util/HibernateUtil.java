@@ -1,4 +1,4 @@
-package com.scll.partner.gcissued.clear.util;
+package com.scll.superadmin.admin.registration.util;
 
 
 import java.io.File;
@@ -19,12 +19,13 @@ public class HibernateUtil {
         
         Configuration configuration = new Configuration();
         File file = new File("resources/hibernate.cfg.xml");
+       //File file = new File("src/main/resources/hibernate.cfg.xml");
         
         
           
         configuration.configure(file);
-        configuration.addAnnotatedClass(com.scll.partner.gcissued.clear.model.CustomerRedemption.class);
-        configuration.addAnnotatedClass(com.scll.partner.gcissued.clear.model.Customer.class);
+        configuration.addAnnotatedClass(com.scll.superadmin.admin.registration.model.Store.class);
+        configuration.addAnnotatedClass(com.scll.superadmin.admin.registration.model.SignIn.class);
         
       
        // configuration.configure();

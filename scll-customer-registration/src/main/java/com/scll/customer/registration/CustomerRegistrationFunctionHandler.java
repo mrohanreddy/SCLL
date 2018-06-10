@@ -44,7 +44,7 @@ public class CustomerRegistrationFunctionHandler implements RequestHandler<Custo
         customer.setCustomerMobileNumber(registrationRequest.getMobileNumber());
         customer.setCustomerEmailAddress(registrationRequest.getEmailID());
         customer.setStoreID(registrationRequest.getScllStore());
-        customer.setAvailablePoints(new Double(0));
+        customer.setAvailablePoints(new Double(2000));
         
         
         try {

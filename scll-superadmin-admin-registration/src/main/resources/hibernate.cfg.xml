@@ -16,8 +16,8 @@
 
              
          
-        <mapping class="com.scll.partner.gcissued.clear.model.CustomerRedemption"></mapping>
-        <mapping class="com.scll.partner.gcissued.clear.model.Customer"></mapping>
+        <mapping class="com.scll.superadmin.admin.registration.model.Store"></mapping>
+        <mapping class="com.scll.superadmin.admin.registration.model.SignIn"></mapping>
  
     </session-factory>
 </hibernate-configuration>

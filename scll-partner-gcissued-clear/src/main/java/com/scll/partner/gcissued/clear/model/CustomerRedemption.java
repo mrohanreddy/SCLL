@@ -32,6 +32,8 @@ public class CustomerRedemption {
 	
 	private String storeID;
 	
+	private Double pointsUsed;
+	
 
 	public String getCustomerRedemptionID() {
 		return customerRedemptionID;
@@ -89,6 +91,14 @@ public class CustomerRedemption {
 
 	public void setStoreID(String storeID) {
 		this.storeID = storeID;
+	}
+
+	public Double getPointsUsed() {
+		return pointsUsed;
+	}
+
+	public void setPointsUsed(Double pointsUsed) {
+		this.pointsUsed = pointsUsed;
 	}
 
 	
